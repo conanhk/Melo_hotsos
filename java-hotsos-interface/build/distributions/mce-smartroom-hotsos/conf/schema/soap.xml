@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:api.m-tech.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:i0="http://htng.org" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:api.m-tech.com" name="MTechAPI">
+<wsp:Policy wsu:Id="SOAP_policy">
+    <wsp:ExactlyOne>
+        <wsp:All>
+            <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <wsp:Policy>
+                <sp:TransportToken>
+                    <wsp:Policy>
+                        <sp:HttpsToken RequireClientCertificate="false"/>
+                    </wsp:Policy>
+                </sp:TransportToken>
+                <sp:AlgorithmSuite>
+                    <wsp:Policy>
+                        <sp:Basic256/>
+                    </wsp:Policy>
+                </sp:AlgorithmSuite>
+                <sp:Layout>
+                    <wsp:Policy>
+                        <sp:Lax/>
+                    </wsp:Policy>
+                </sp:Layout>
+                <sp:IncludeTimestamp/>
+            </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+        <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+            <wsp:Policy>
+                <sp:WssUsernameToken10/>
+            </wsp:Policy>
+        </sp:UsernameToken>
+    </wsp:Policy>
+</sp:SignedSupportingTokens>
+<sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy/>
+</sp:Wss10>
+</wsp:All>
+</wsp:ExactlyOne>
+</wsp:Policy>
+<wsdl:types>
+    <xsd:schema targetNamespace="urn:api.m-tech.com/Imports">
+    <xsd:import namespace="urn:api.m-tech.com" schemaLocation="xsd2.xsd"/>
+    <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="xsd0.xsd"/>
+    <xsd:import namespace="urn:serviceorder.api.m-tech.com" schemaLocation="xsd1.xsd"/>
+    <xsd:import namespace="urn:fault.api.m-tech.com" schemaLocation="xsd3.xsd"/>
+    <xsd:import namespace="http://schemas.datacontract.org/2004/07/messaging.api" schemaLocation="xsd4.xsd"/>
+    <xsd:import namespace="urn:guest.api.m-tech.com" schemaLocation="xsd5.xsd"/>
+    <xsd:import namespace="urn:room.api.m-tech.com" schemaLocation="xsd6.xsd"/>
+    <xsd:import namespace="urn:issue.api.m-tech.com" schemaLocation="xsd7.xsd"/>
+    <xsd:import namespace="urn:messaging.api.m-tech.com" schemaLocation="xsd8.xsd"/>
+    <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="xsd9.xsd"/>
+    <xsd:import namespace="urn:inventory.api.m-tech.com" schemaLocation="xsd10.xsd"/>
+    <xsd:import namespace="http://schemas.microsoft.com/Message" schemaLocation="xsd11.xsd"/>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="MTechAPI_get_InputMessage">
+    <wsdl:part name="parameters" element="tns:get"/>
+</wsdl:message>
+<wsdl:message name="MTechAPI_get_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getResponse"/>
+</wsdl:message>
+<wsdl:message name="MTechAPI_get_apiFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:apiFault"/>
+</wsdl:message>
+<wsdl:message name="MTechAPI_send_InputMessage">
+    <wsdl:part name="parameters" element="tns:send"/>
+</wsdl:message>
+<wsdl:message name="MTechAPI_send_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendResponse"/>
+</wsdl:message>
+<wsdl:message name="MTechAPI_send_apiFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:apiFault"/>
+</wsdl:message>
+<wsdl:message name="MTechAPI_delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:delete"/>
+</wsdl:message>
+<wsdl:message name="MTechAPI_delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteResponse"/>
+</wsdl:message>
+<wsdl:message name="MTechAPI_delete_apiFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:apiFault"/>
+</wsdl:message>
+<wsdl:portType name="MTechAPI">
+    <wsdl:operation name="get">
+        <wsdl:input message="tns:MTechAPI_get_InputMessage" wsaw:Action="urn:api.m-tech.com/get"/>
+        <wsdl:output message="tns:MTechAPI_get_OutputMessage" wsaw:Action="urn:api.m-tech.com/getResponse"/>
+        <wsdl:fault name="apiFault" message="tns:MTechAPI_get_apiFault_FaultMessage" wsaw:Action="urn:api.m-tech.com/getFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="send">
+        <wsdl:input message="tns:MTechAPI_send_InputMessage" wsaw:Action="urn:api.m-tech.com/send"/>
+        <wsdl:output message="tns:MTechAPI_send_OutputMessage" wsaw:Action="urn:api.m-tech.com/sendResponse"/>
+        <wsdl:fault name="apiFault" message="tns:MTechAPI_send_apiFault_FaultMessage" wsaw:Action="urn:api.m-tech.com/sendFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+        <wsdl:input message="tns:MTechAPI_delete_InputMessage" wsaw:Action="urn:api.m-tech.com/delete"/>
+        <wsdl:output message="tns:MTechAPI_delete_OutputMessage" wsaw:Action="urn:api.m-tech.com/deleteResponse"/>
+        <wsdl:fault name="apiFault" message="tns:MTechAPI_delete_apiFault_FaultMessage" wsaw:Action="urn:api.m-tech.com/deleteFault"/>
+    </wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="SOAP" type="tns:MTechAPI">
+    <wsp:PolicyReference URI="#SOAP_policy"/>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get">
+        <soap:operation style="document" soapAction="urn:api.m-tech.com/get"/>
+        <wsdl:input>
+            <soap:body use="literal"/>
+        </wsdl:input>
+        <wsdl:output>
+            <soap:body use="literal"/>
+        </wsdl:output>
+        <wsdl:fault name="apiFault">
+            <soap:fault name="apiFault" use="literal"/>
+        </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="send">
+        <soap:operation style="document" soapAction="urn:api.m-tech.com/send"/>
+        <wsdl:input>
+            <soap:body use="literal"/>
+        </wsdl:input>
+        <wsdl:output>
+            <soap:body use="literal"/>
+        </wsdl:output>
+        <wsdl:fault name="apiFault">
+            <soap:fault name="apiFault" use="literal"/>
+        </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+        <soap:operation style="document" soapAction="urn:api.m-tech.com/delete"/>
+        <wsdl:input>
+            <soap:body use="literal"/>
+        </wsdl:input>
+        <wsdl:output>
+            <soap:body use="literal"/>
+        </wsdl:output>
+        <wsdl:fault name="apiFault">
+            <soap:fault name="apiFault" use="literal"/>
+        </wsdl:fault>
+    </wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="MTechAPI">
+    <wsdl:port name="SOAP" binding="tns:SOAP">
+        <soap:address location="https://ifc.int.hot-sos.net/API/Service.svc/soap"/>
+    </wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

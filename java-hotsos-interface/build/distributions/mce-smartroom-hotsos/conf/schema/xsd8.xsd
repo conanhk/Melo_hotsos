@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="urn:messaging.api.m-tech.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:messaging.api.m-tech.com" elementFormDefault="qualified">
+<xs:import namespace="urn:api.m-tech.com" schemaLocation="xsd2.xsd"/>
+<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="xsd9.xsd"/>
+<xs:import namespace="urn:serviceorder.api.m-tech.com" schemaLocation="xsd1.xsd"/>
+<xs:complexType name="Message">
+<xs:complexContent mixed="false">
+<xs:extension base="q1:apiObject" xmlns:q1="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:boolean" nillable="true" name="DirectedToTeam" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q1:User" nillable="true" name="Recipient" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Response" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Subject" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Text" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:MessageTypeEnum" nillable="true" name="Type" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q2:ArrayOfstring" nillable="true" name="ValidResponses" minOccurs="0" xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Message" nillable="true" name="Message"/>
+<xs:simpleType name="MessageTypeEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="TEXT_MESSAGE"/>
+<xs:enumeration value="SERVICE_ORDER"/>
+<xs:enumeration value="ERROR"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:MessageTypeEnum" nillable="true" name="MessageTypeEnum"/>
+<xs:complexType name="ServiceOrderMessage">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:Message">
+<xs:sequence>
+<xs:element type="q3:ServiceOrder" nillable="true" name="ServiceOrder" minOccurs="0" xmlns:q3="urn:serviceorder.api.m-tech.com">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:ServiceOrderMessage" nillable="true" name="ServiceOrderMessage"/>
+<xs:complexType name="GetMessageInboxCollection">
+<xs:complexContent mixed="false">
+<xs:extension base="q4:apiObject" xmlns:q4="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="q4:User" nillable="true" name="User" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetMessageInboxCollection" nillable="true" name="GetMessageInboxCollection"/>
+<xs:complexType name="GetUndeliveredMessagesCollection">
+<xs:complexContent mixed="false">
+<xs:extension base="q5:apiObject" xmlns:q5="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Provider" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q5:ArrayOfUser" nillable="true" name="Users" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetUndeliveredMessagesCollection" nillable="true" name="GetUndeliveredMessagesCollection"/>
+<xs:complexType name="GetUndeliveredNotificationsCollection">
+<xs:complexContent mixed="false">
+<xs:extension base="q6:apiObject" xmlns:q6="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Provider" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetUndeliveredNotificationsCollection" nillable="true" name="GetUndeliveredNotificationsCollection"/>
+<xs:complexType name="Notification">
+<xs:complexContent mixed="false">
+<xs:extension base="q7:apiObject" xmlns:q7="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Author" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="NotificationToken" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Text" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:NotificationTypeEnum" nillable="true" name="Type" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Notification" nillable="true" name="Notification"/>
+<xs:simpleType name="NotificationTypeEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="MESSAGE"/>
+<xs:enumeration value="SERVICE_ORDER"/>
+<xs:enumeration value="REPORT"/>
+<xs:enumeration value="ERROR"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:NotificationTypeEnum" nillable="true" name="NotificationTypeEnum"/>
+</xs:schema>

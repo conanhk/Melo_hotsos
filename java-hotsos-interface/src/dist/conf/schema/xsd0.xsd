@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" attributeFormDefault="qualified">
+<xs:element type="xs:anyType" nillable="true" name="anyType"/>
+<xs:element type="xs:anyURI" nillable="true" name="anyURI"/>
+<xs:element type="xs:base64Binary" nillable="true" name="base64Binary"/>
+<xs:element type="xs:boolean" nillable="true" name="boolean"/>
+<xs:element type="xs:byte" nillable="true" name="byte"/>
+<xs:element type="xs:dateTime" nillable="true" name="dateTime"/>
+<xs:element type="xs:decimal" nillable="true" name="decimal"/>
+<xs:element type="xs:double" nillable="true" name="double"/>
+<xs:element type="xs:float" nillable="true" name="float"/>
+<xs:element type="xs:int" nillable="true" name="int"/>
+<xs:element type="xs:long" nillable="true" name="long"/>
+<xs:element type="xs:QName" nillable="true" name="QName"/>
+<xs:element type="xs:short" nillable="true" name="short"/>
+<xs:element type="xs:string" nillable="true" name="string"/>
+<xs:element type="xs:unsignedByte" nillable="true" name="unsignedByte"/>
+<xs:element type="xs:unsignedInt" nillable="true" name="unsignedInt"/>
+<xs:element type="xs:unsignedLong" nillable="true" name="unsignedLong"/>
+<xs:element type="xs:unsignedShort" nillable="true" name="unsignedShort"/>
+<xs:element type="tns:char" nillable="true" name="char"/>
+<xs:simpleType name="char">
+<xs:restriction base="xs:int"/>
+</xs:simpleType>
+<xs:element type="tns:duration" nillable="true" name="duration"/>
+<xs:simpleType name="duration">
+<xs:restriction base="xs:duration">
+<xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+<xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+<xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:guid" nillable="true" name="guid"/>
+<xs:simpleType name="guid">
+<xs:restriction base="xs:string">
+<xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:attribute type="xs:QName" name="FactoryType"/>
+<xs:attribute type="xs:ID" name="Id"/>
+<xs:attribute type="xs:IDREF" name="Ref"/>
+</xs:schema>

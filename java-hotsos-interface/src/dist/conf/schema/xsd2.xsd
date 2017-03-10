@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="urn:api.m-tech.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:api.m-tech.com" elementFormDefault="qualified">
+<xs:import namespace="urn:fault.api.m-tech.com" schemaLocation="xsd3.xsd"/>
+<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="xsd9.xsd"/>
+<xs:import namespace="http://schemas.datacontract.org/2004/07/messaging.api" schemaLocation="xsd4.xsd"/>
+<xs:import namespace="http://schemas.microsoft.com/Message" schemaLocation="xsd11.xsd"/>
+<xs:complexType name="apiObject">
+    <xs:sequence>
+        <xs:element xmlns:q1="urn:fault.api.m-tech.com" name="Error" type="q1:apiFault" nillable="true" minOccurs="0">
+            <xs:annotation>
+                <xs:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:element>
+        <xs:element name="ExtendedAttributes" type="tns:ArrayOfExtendedAttribute" nillable="true" minOccurs="0">
+            <xs:annotation>
+                <xs:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:element>
+        <xs:element name="ID" type="xs:string" nillable="true" minOccurs="0">
+            <xs:annotation>
+                <xs:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:element>
+        <xs:element name="Impersonate" type="tns:User" nillable="true" minOccurs="0">
+            <xs:annotation>
+                <xs:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:element>
+        <xs:element name="RecordID" type="xs:string" nillable="true" minOccurs="0">
+            <xs:annotation>
+                <xs:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:element>
+        <xs:element name="UnitID" type="xs:string" nillable="true" minOccurs="0">
+            <xs:annotation>
+                <xs:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:element>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="fieldsToNull" type="q2:ArrayOfstring" nillable="true" minOccurs="0">
+        <xs:annotation>
+            <xs:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+            </xs:appinfo>
+        </xs:annotation>
+    </xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="apiObject" type="tns:apiObject" nillable="true"/>
+<xs:complexType name="ArrayOfExtendedAttribute">
+    <xs:sequence>
+        <xs:element name="ExtendedAttribute" type="tns:ExtendedAttribute" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfExtendedAttribute" type="tns:ArrayOfExtendedAttribute" nillable="true"/>
+<xs:complexType name="ExtendedAttribute">
+    <xs:sequence>
+        <xs:element name="Name" type="xs:string" nillable="true" minOccurs="0">
+            <xs:annotation>
+                <xs:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:element>
+        <xs:element name="Value" type="xs:anyType" nillable="true" minOccurs="0">
+            <xs:annotation>
+                <xs:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:element>
+    </xs:sequence>
+</xs:complexType>
+<xs:element name="ExtendedAttribute" type="tns:ExtendedAttribute" nillable="true"/>
+<xs:complexType name="User">
+    <xs:complexContent mixed="false">
+        <xs:extension base="tns:apiObject">
+            <xs:sequence>
+                <xs:element name="CurrentRoom" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Department" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Device" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/messaging.api" name="DeviceInfo" type="q3:Device" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Location" type="tns:UserLocation" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Login" type="xs:string" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MD5" type="xs:string" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Password" type="xs:string" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SHA512" type="xs:string" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Section" type="xs:string" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Status" type="tns:UserStatusEnum" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Trade" type="xs:string" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="User" type="tns:User" nillable="true"/>
+<xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+        <xs:element name="User" type="tns:User" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfUser" type="tns:ArrayOfUser" nillable="true"/>
+<xs:complexType name="Settings">
+    <xs:complexContent mixed="false">
+        <xs:extension base="tns:apiObject">
+            <xs:sequence>
+                <xs:element name="AskCheckout" type="xs:boolean" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="AskGreenOption" type="xs:boolean" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="DayStartTime" type="xs:dateTime" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Enabled" type="xs:boolean" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+<xs:element name="Settings" type="tns:Settings" nillable="true"/>
+<xs:complexType name="Unit">
+    <xs:complexContent mixed="false">
+        <xs:extension base="tns:apiObject">
+            <xs:sequence>
+                <xs:element name="Corporation" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Name" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+<xs:element name="Unit" type="tns:Unit" nillable="true"/>
+<xs:complexType name="GetApiObjectCollection">
+    <xs:complexContent mixed="false">
+        <xs:extension base="tns:apiObject">
+            <xs:sequence>
+                <xs:element name="Filter" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Type" type="tns:ObjectType" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+<xs:element name="GetApiObjectCollection" type="tns:GetApiObjectCollection" nillable="true"/>
+<xs:simpleType name="ObjectType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="User"/>
+        <xs:enumeration value="Device"/>
+    </xs:restriction>
+</xs:simpleType>
+<xs:element name="ObjectType" type="tns:ObjectType" nillable="true"/>
+<xs:complexType name="Token">
+    <xs:complexContent mixed="false">
+        <xs:extension base="tns:apiObject">
+            <xs:sequence>
+                <xs:element name="UnitName" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Value" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+<xs:element name="Token" type="tns:Token" nillable="true"/>
+<xs:complexType name="UserLocation">
+    <xs:complexContent mixed="false">
+        <xs:extension base="tns:apiObject">
+            <xs:sequence>
+                <xs:element name="BarometerInfo" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="BeaconInfo" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ConnectionInfo" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="GeoLocation" type="tns:GeoCoordinate" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="LastUpdated" type="xs:dateTime" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="LocationName" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+<xs:element name="UserLocation" type="tns:UserLocation" nillable="true"/>
+<xs:complexType name="GeoCoordinate">
+    <xs:complexContent mixed="false">
+        <xs:extension base="tns:apiObject">
+            <xs:sequence>
+                <xs:element name="Altitude" type="xs:decimal" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Latitude" type="xs:decimal" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Longitude" type="xs:decimal" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+<xs:element name="GeoCoordinate" type="tns:GeoCoordinate" nillable="true"/>
+<xs:complexType name="QueryServiceOrder">
+    <xs:complexContent mixed="false">
+        <xs:extension base="tns:apiObject">
+            <xs:sequence>
+                <xs:element name="ResID" type="xs:string" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+<xs:element name="QueryServiceOrder" type="tns:QueryServiceOrder" nillable="true"/>
+<xs:simpleType name="UserStatusEnum">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="LOGGED_IN"/>
+        <xs:enumeration value="LOGGED_OUT"/>
+    </xs:restriction>
+</xs:simpleType>
+<xs:element name="UserStatusEnum" type="tns:UserStatusEnum" nillable="true"/>
+<xs:complexType name="ApiObjectCollection">
+    <xs:complexContent mixed="false">
+        <xs:extension base="tns:apiObject">
+            <xs:sequence>
+                <xs:element name="Items" type="tns:ArrayOfapiObject" nillable="true" minOccurs="0">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+<xs:element name="ApiObjectCollection" type="tns:ApiObjectCollection" nillable="true"/>
+<xs:complexType name="ArrayOfapiObject">
+    <xs:sequence>
+        <xs:element name="apiObject" type="tns:apiObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfapiObject" type="tns:ArrayOfapiObject" nillable="true"/>
+<xs:element name="get">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="apiObject" type="tns:apiObject" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="getResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="getResult" type="tns:apiObject" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element xmlns:q4="urn:fault.api.m-tech.com" name="apiFault" type="q4:apiFault" nillable="true"/>
+<xs:element name="send">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="apiObject" type="tns:apiObject" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="sendResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="sendResult" type="tns:apiObject" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="delete">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="apiObject" type="tns:apiObject" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="deleteResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="deleteResult" type="tns:apiObject" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetRest">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetRestResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="GetRestResult" type="tns:apiObject" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetRestStream">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetRestStreamResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.microsoft.com/Message" name="GetRestStreamResult" type="q5:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetRest2">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="operation" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetRest2Response">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="GetRest2Result" type="tns:apiObject" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetRest2Stream">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="operation" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetRest2StreamResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.microsoft.com/Message" name="GetRest2StreamResult" type="q6:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="PostRest">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="PostRestResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="PostRestResult" type="tns:apiObject" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="PostRestStream">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="PostRestStreamResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.microsoft.com/Message" name="PostRestStreamResult" type="q7:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="PostRest2Stream">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="operation" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="PostRest2StreamResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.microsoft.com/Message" name="PostRest2StreamResult" type="q8:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DeleteRest">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="operation" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DeleteRestResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="DeleteRestResult" type="tns:apiObject" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DeleteRestStream">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="operation" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DeleteRestStreamResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.microsoft.com/Message" name="DeleteRestStreamResult" type="q9:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="Query">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="QueryResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.microsoft.com/Message" name="QueryResult" type="q10:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetStorage">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetStorageResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.microsoft.com/Message" name="GetStorageResult" type="q11:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetStorageCollectionWithLocator">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="locator" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetStorageCollectionWithLocatorResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.microsoft.com/Message" name="GetStorageCollectionWithLocatorResult" type="q12:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetStorageByKey">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="key" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetStorageByKeyResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.microsoft.com/Message" name="GetStorageByKeyResult" type="q13:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetStorageRelatedByKey">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="key" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetStorageRelatedByKeyResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q14="http://schemas.microsoft.com/Message" name="GetStorageRelatedByKeyResult" type="q14:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DeleteStorage">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="collectionID" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DeleteStorageResponse">
+    <xs:complexType>
+        <xs:sequence/>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DeleteStorageByKey">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="key" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DeleteStorageByKeyResponse">
+    <xs:complexType>
+        <xs:sequence/>
+    </xs:complexType>
+</xs:element>
+<xs:element name="PostStorage">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="key" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="PostStorageResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.microsoft.com/Message" name="PostStorageResult" type="q15:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="PostStorageCollection">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="PostStorageCollectionResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q16="http://schemas.microsoft.com/Message" name="PostStorageCollectionResult" type="q16:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="QueryText">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="text" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="QueryTextResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element xmlns:q17="http://schemas.microsoft.com/Message" name="QueryTextResult" type="q17:StreamBody"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+</xs:schema>

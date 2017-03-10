@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="urn:guest.api.m-tech.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:guest.api.m-tech.com" elementFormDefault="qualified">
+<xs:import namespace="urn:api.m-tech.com" schemaLocation="xsd2.xsd"/>
+<xs:import namespace="urn:room.api.m-tech.com" schemaLocation="xsd6.xsd"/>
+<xs:complexType name="Preference">
+<xs:complexContent mixed="false">
+<xs:extension base="q1:apiObject" xmlns:q1="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Name" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Value" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Preference" nillable="true" name="Preference"/>
+<xs:complexType name="Reservation">
+<xs:complexContent mixed="false">
+<xs:extension base="q2:apiObject" xmlns:q2="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:int" nillable="true" name="Adults" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" nillable="true" name="Arrival" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="BanquetRevenue" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" nillable="true" name="Birthday" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q3:ArrayOfRoom" nillable="true" name="ChildRooms" minOccurs="0" xmlns:q3="urn:room.api.m-tech.com">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:int" nillable="true" name="Children" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="City" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:Profile" nillable="true" name="Company" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Country" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="CurrencyCode" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" nillable="true" name="Departure" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Email" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Fax" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="FirstName" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="FoodRevenue" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:GreenChoiceEnum" nillable="true" name="GreenChoice" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:Group" nillable="true" name="Group" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:boolean" nillable="true" name="IsCityGuest" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Language" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="LastName" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="LoyaltyID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Market" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="MiddleInitial" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:int" nillable="true" name="Nights" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="OtherRevenue" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Phone" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="PostalCode" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ArrayOfPreference" nillable="true" name="Preferences" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="ProfileID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="Rate" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="RateCode" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="RoomNumber" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="RoomRevenue" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="RoomType" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Salutation" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Source" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="SpecialInstructions" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="SpecialRequests" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="State" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ReservationStatusEnum" nillable="true" name="Status" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Street" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:Profile" nillable="true" name="TravelAgent" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="VIP" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Reservation" nillable="true" name="Reservation"/>
+<xs:complexType name="GetReservations">
+<xs:complexContent mixed="false">
+<xs:extension base="q4:apiObject" xmlns:q4="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="RoomNumber" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetReservations" nillable="true" name="GetReservations"/>
+<xs:complexType name="GetProfileRequest">
+<xs:complexContent mixed="false">
+<xs:extension base="q5:apiObject" xmlns:q5="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="ProfileID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="ReservationID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetProfileRequest" nillable="true" name="GetProfileRequest"/>
+<xs:complexType name="Amenity">
+<xs:complexContent mixed="false">
+<xs:extension base="q6:apiObject" xmlns:q6="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Name" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="Price" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="ResID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="RoomNumber" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" nillable="true" name="TimeStamp" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="TransactionCode" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:int" name="TransactionID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Amenity" nillable="true" name="Amenity"/>
+<xs:complexType name="Consumption">
+<xs:complexContent mixed="false">
+<xs:extension base="q7:apiObject" xmlns:q7="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="tns:Amenity" nillable="true" name="Amenity" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:int" name="Quantity" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:int" name="RoomCode" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Consumption" nillable="true" name="Consumption"/>
+<xs:complexType name="Group">
+<xs:complexContent mixed="false">
+<xs:extension base="q8:apiObject" xmlns:q8="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:dateTime" nillable="true" name="Arrival" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" nillable="true" name="Departure" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Name" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ReservationStatusEnum" nillable="true" name="Status" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Group" nillable="true" name="Group"/>
+<xs:simpleType name="ReservationStatusEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="RESERVED"/>
+<xs:enumeration value="CANCELLED"/>
+<xs:enumeration value="CHECKED_IN"/>
+<xs:enumeration value="CHECKED_OUT"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:ReservationStatusEnum" nillable="true" name="ReservationStatusEnum"/>
+<xs:complexType name="Profile">
+<xs:complexContent mixed="false">
+<xs:extension base="q9:apiObject" xmlns:q9="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:dateTime" nillable="true" name="Birthday" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="City" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Country" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Email" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Fax" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="FirstName" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:boolean" nillable="true" name="HasServiceOrders" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="LastName" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="LoyaltyID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="MiddleInitial" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Phone" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="PostalCode" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ArrayOfPreference" nillable="true" name="Preferences" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Salutation" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="State" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Street" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ProfileTypeEnum" name="Type" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="URL" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="VIP" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Profile" nillable="true" name="Profile"/>
+<xs:complexType name="ArrayOfPreference">
+<xs:sequence>
+<xs:element type="tns:Preference" nillable="true" name="Preference" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element type="tns:ArrayOfPreference" nillable="true" name="ArrayOfPreference"/>
+<xs:simpleType name="ProfileTypeEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="GUEST"/>
+<xs:enumeration value="COMPANY"/>
+<xs:enumeration value="TRAVEL_AGENT"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:ProfileTypeEnum" nillable="true" name="ProfileTypeEnum"/>
+<xs:complexType name="GetAmenityUpdatesCollection">
+<xs:complexContent mixed="false">
+<xs:extension base="q10:apiObject" xmlns:q10="urn:api.m-tech.com">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetAmenityUpdatesCollection" nillable="true" name="GetAmenityUpdatesCollection"/>
+<xs:simpleType name="GreenChoiceEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="ONE_TIME"/>
+<xs:enumeration value="ENTIRE_STAY"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:GreenChoiceEnum" nillable="true" name="GreenChoiceEnum"/>
+</xs:schema>

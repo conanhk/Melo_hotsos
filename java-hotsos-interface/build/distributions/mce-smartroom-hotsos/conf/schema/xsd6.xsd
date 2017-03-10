@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="urn:room.api.m-tech.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:room.api.m-tech.com" elementFormDefault="qualified">
+<xs:import namespace="urn:api.m-tech.com" schemaLocation="xsd2.xsd"/>
+<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="xsd0.xsd"/>
+<xs:complexType name="RoomRush">
+<xs:complexContent mixed="false">
+<xs:extension base="q1:apiObject" xmlns:q1="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="ReservationID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="RoomNumber" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="RoomType" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:RoomRushStatusEnum" nillable="true" name="Status" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:RoomRush" nillable="true" name="RoomRush"/>
+<xs:simpleType name="RoomRushStatusEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="CREATED"/>
+<xs:enumeration value="CANCELLED"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:RoomRushStatusEnum" nillable="true" name="RoomRushStatusEnum"/>
+<xs:complexType name="GetRoomCollection">
+<xs:complexContent mixed="false">
+<xs:extension base="q2:apiObject" xmlns:q2="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="nameLike" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetRoomCollection" nillable="true" name="GetRoomCollection"/>
+<xs:complexType name="ArrayOfRoom">
+<xs:sequence>
+<xs:element type="tns:Room" nillable="true" name="Room" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element type="tns:ArrayOfRoom" nillable="true" name="ArrayOfRoom"/>
+<xs:complexType name="Room">
+<xs:complexContent mixed="false">
+<xs:extension base="q3:apiObject" xmlns:q3="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="q3:User" nillable="true" name="Attendant" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" nillable="true" name="CleanTime" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:boolean" nillable="true" name="DND" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" nillable="true" name="EventTime" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:RoomEventEnum" nillable="true" name="EventType" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Extension" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:boolean" nillable="true" name="GuestInRoom" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:boolean" nillable="true" name="MakeUp" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Name" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:boolean" nillable="true" name="Occupied" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="RoomNumber" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Section" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ServiceStatusEnum" nillable="true" name="ServiceStatus" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:HousekeepingShiftEnum" nillable="true" name="Shift" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="SpecialInstructions" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:RoomStatusEnum" nillable="true" name="Status" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="TaskCode" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="URL" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Room" nillable="true" name="Room"/>
+<xs:simpleType name="RoomEventEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="VACANT_CLEANED">
+<xs:annotation>
+<xs:appinfo>
+<EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+</xs:appinfo>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="OCCUPIED_CLEANED">
+<xs:annotation>
+<xs:appinfo>
+<EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+</xs:appinfo>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="CLEANING_STARTED">
+<xs:annotation>
+<xs:appinfo>
+<EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+</xs:appinfo>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="INSPECTED">
+<xs:annotation>
+<xs:appinfo>
+<EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+</xs:appinfo>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="SERVICE_REFUSED">
+<xs:annotation>
+<xs:appinfo>
+<EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+</xs:appinfo>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="RETURN_LATER">
+<xs:annotation>
+<xs:appinfo>
+<EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+</xs:appinfo>
+</xs:annotation>
+</xs:enumeration>
+<xs:enumeration value="DO_NOT_DISTURB">
+<xs:annotation>
+<xs:appinfo>
+<EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+</xs:appinfo>
+</xs:annotation>
+</xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:RoomEventEnum" nillable="true" name="RoomEventEnum"/>
+<xs:simpleType name="ServiceStatusEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="AWAITING_SERVICE"/>
+<xs:enumeration value="VACANT_CLEANED"/>
+<xs:enumeration value="OCCUPIED_CLEANED"/>
+<xs:enumeration value="CLEANING_STARTED"/>
+<xs:enumeration value="DO_NOT_DISTURB"/>
+<xs:enumeration value="SERVICE_REFUSED"/>
+<xs:enumeration value="STOPPED"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:ServiceStatusEnum" nillable="true" name="ServiceStatusEnum"/>
+<xs:simpleType name="HousekeepingShiftEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="AM"/>
+<xs:enumeration value="PM"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:HousekeepingShiftEnum" nillable="true" name="HousekeepingShiftEnum"/>
+<xs:simpleType name="RoomStatusEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="CLEAN"/>
+<xs:enumeration value="DIRTY"/>
+<xs:enumeration value="OUT_OF_ORDER"/>
+<xs:enumeration value="OUT_OF_SERVICE"/>
+<xs:enumeration value="INSPECTED"/>
+<xs:enumeration value="PICKUP"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:RoomStatusEnum" nillable="true" name="RoomStatusEnum"/>
+<xs:complexType name="GetRoomUpdatesCollection">
+<xs:complexContent mixed="false">
+<xs:extension base="q4:apiObject" xmlns:q4="urn:api.m-tech.com">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetRoomUpdatesCollection" nillable="true" name="GetRoomUpdatesCollection"/>
+<xs:complexType name="RoomEqType">
+<xs:complexContent mixed="false">
+<xs:extension base="q5:apiObject" xmlns:q5="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Name" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:RoomEqType" nillable="true" name="RoomEqType"/>
+<xs:complexType name="GetRoomEqTypeCollection">
+<xs:complexContent mixed="false">
+<xs:extension base="q6:apiObject" xmlns:q6="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="nameLike" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetRoomEqTypeCollection" nillable="true" name="GetRoomEqTypeCollection"/>
+<xs:complexType name="TaskSheet">
+<xs:complexContent mixed="false">
+<xs:extension base="q7:apiObject" xmlns:q7="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="AttendantFirstName" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="AttendantID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="AttendantLastName" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="RoomNumber" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="TaskCode" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="TaskInstruction" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:TaskSheet" nillable="true" name="TaskSheet"/>
+</xs:schema>

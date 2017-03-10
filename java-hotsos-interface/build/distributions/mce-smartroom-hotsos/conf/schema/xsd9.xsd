@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified">
+<xs:complexType name="ArrayOfstring">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element type="tns:ArrayOfstring" nillable="true" name="ArrayOfstring"/>
+</xs:schema>

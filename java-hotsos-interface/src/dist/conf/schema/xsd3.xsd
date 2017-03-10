@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="urn:fault.api.m-tech.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:fault.api.m-tech.com" elementFormDefault="qualified">
+<xs:complexType name="apiFault">
+<xs:sequence>
+<xs:element type="tns:apiFaultCode" name="code" minOccurs="0"/>
+<xs:element type="xs:string" nillable="true" name="message" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element type="tns:apiFault" nillable="true" name="apiFault"/>
+<xs:simpleType name="apiFaultCode">
+<xs:restriction base="xs:string">
+<xs:enumeration value="UNEXPECTED_ERROR"/>
+<xs:enumeration value="LOGIN_FAILED"/>
+<xs:enumeration value="OBJECT_NOT_FOUND"/>
+<xs:enumeration value="DUPLICATE_LIMIT_EXCEEDED"/>
+<xs:enumeration value="INVALID_REQUEST"/>
+<xs:enumeration value="REQUEST_LIMIT_EXCEEDED"/>
+<xs:enumeration value="COLLECTION_LIMIT_EXCEEDED"/>
+<xs:enumeration value="ACCESS_DENIED"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:apiFaultCode" nillable="true" name="apiFaultCode"/>
+</xs:schema>

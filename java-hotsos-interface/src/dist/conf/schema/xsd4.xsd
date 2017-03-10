@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/messaging.api" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.datacontract.org/2004/07/messaging.api" elementFormDefault="qualified">
+<xs:import namespace="urn:api.m-tech.com" schemaLocation="xsd2.xsd"/>
+<xs:complexType name="Device">
+<xs:complexContent mixed="false">
+<xs:extension base="q1:apiObject" xmlns:q1="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Name" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Device" nillable="true" name="Device"/>
+</xs:schema>

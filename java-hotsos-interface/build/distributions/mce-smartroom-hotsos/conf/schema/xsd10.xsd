@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="urn:inventory.api.m-tech.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:inventory.api.m-tech.com" elementFormDefault="qualified">
+<xs:import namespace="urn:api.m-tech.com" schemaLocation="xsd2.xsd"/>
+<xs:complexType name="Part">
+<xs:complexContent mixed="false">
+<xs:extension base="q1:apiObject" xmlns:q1="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Name" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ArrayOfStockRoom" nillable="true" name="StockRooms" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Part" nillable="true" name="Part"/>
+<xs:complexType name="ArrayOfStockRoom">
+<xs:sequence>
+<xs:element type="tns:StockRoom" nillable="true" name="StockRoom" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element type="tns:ArrayOfStockRoom" nillable="true" name="ArrayOfStockRoom"/>
+<xs:complexType name="StockRoom">
+<xs:complexContent mixed="false">
+<xs:extension base="q2:apiObject" xmlns:q2="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Name" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="Price" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" name="QuantityAvailable" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:StockRoom" nillable="true" name="StockRoom"/>
+<xs:complexType name="UsePartRequest">
+<xs:complexContent mixed="false">
+<xs:extension base="q3:apiObject" xmlns:q3="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="LineID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="PartID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="Price" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:int" name="Quantity" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="ServiceOrderID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="StockRoomID" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:UsePartRequest" nillable="true" name="UsePartRequest"/>
+<xs:complexType name="GetPartsCollection">
+<xs:complexContent mixed="false">
+<xs:extension base="q4:apiObject" xmlns:q4="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="BarCode" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Name" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetPartsCollection" nillable="true" name="GetPartsCollection"/>
+<xs:complexType name="InventorySettings">
+<xs:complexContent mixed="false">
+<xs:extension base="q5:apiObject" xmlns:q5="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:boolean" nillable="true" name="Enabled" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:InventorySettings" nillable="true" name="InventorySettings"/>
+</xs:schema>

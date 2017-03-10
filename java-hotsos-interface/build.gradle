@@ -1,0 +1,137 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+ext {
+    if (project.hasProperty('teamcity')) {
+            libDir = './SharedLibs'
+    } else {
+            libDir = '../../SharedLibs'
+    }
+
+    println "Lib Dir is " + libDir
+}
+
+mainClassName = "com.melcocrown.smartroom.hotsos.ws.HostSosClient"
+    
+repositories {
+    mavenLocal()
+    mavenCentral()  
+    jcenter()
+}
+
+jar {
+    version = System.getProperty('teamcityBuildBranch') ? System.getProperty('teamcityBuildBranch') : '0.1.0'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+configurations {
+    all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    all*.exclude group: 'log4j', module: 'log4j'
+}
+
+
+configurations {
+    jaxb
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.1.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+}
+
+// tag::wsdl[]
+task genJaxb {
+    ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
+    ext.classesDir = "${buildDir}/classes/jaxb"
+    ext.schema = "src/main/schema/soap.xml"
+
+    outputs.dir classesDir
+
+    doLast() {
+        project.ant {
+            taskdef name: "xjc", classname: "com.sun.tools.xjc.XJCTask",
+                    classpath: configurations.jaxb.asPath
+            mkdir(dir: sourcesDir)
+            mkdir(dir: classesDir)
+
+            xjc(destdir: sourcesDir, schema: schema,
+                    package: "com.melcocrown.smartroom.hotsos.ws") {
+                arg(value: "-wsdl")
+                produces(dir: sourcesDir, includes: "**/*.*")
+                binding(dir:"src/main/schema", includes:"binding.xjb")
+            }
+
+            javac(destdir: classesDir, source: 1.8, target: 1.8, debug: true,
+                    debugLevel: "lines,vars,source",
+                    classpath: configurations.jaxb.asPath) {
+                src(path: sourcesDir)
+                include(name: "**/*.java")
+                include(name: "*.java")
+            }
+
+            copy(todir: classesDir) {
+                fileset(dir: sourcesDir, erroronmissingdir: false) {
+                    exclude(name: "**/*.java")
+                }
+            }
+        }
+    }
+}
+// end::wsdl[]
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+	compile fileTree(dir: libDir, include: 'mce-common-*.jar')
+    compile fileTree(dir: libDir, include: 'mce-mqtt-*.jar')
+
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.ws:spring-ws-core")
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+ 	compile group: 'org.springframework', name: 'spring-jdbc', version: '2.0.6'
+ 	compile 'org.apache.commons:commons-compress:1.11'
+	compile "org.apache.commons:commons-lang3:3.4"
+ 	compile "commons-configuration:commons-configuration:1.10"
+	compile "commons-io:commons-io:2.5"
+	compile "com.google.code.gson:gson:2.6.+"
+	compile 'org.scream3r:jssc:2.8.0'
+	compile "org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.+"
+
+	runtime 'ch.qos.logback:logback-classic:1.1.2'
+    runtime 'ch.qos.logback:logback-core:1.1.2'
+	runtime 'org.fluentd:fluent-logger:0.3.+'
+	runtime 'com.google.guava:guava:19.+'
+	runtime "com.google.code.gson:gson:2.6.+"
+  //  compile(files(genJaxb.classesDir).builtBy(genJaxb))
+
+    //jaxb "com.sun.xml.bind:jaxb-xjc:2.1.7"
+}
+
+jar {
+    baseName = 'gs-consuming-web-service'
+    version =  '0.1.0'
+
+    from genJaxb.classesDir
+}
+
+
+task afterEclipseImport {
+    dependsOn genJaxb
+}

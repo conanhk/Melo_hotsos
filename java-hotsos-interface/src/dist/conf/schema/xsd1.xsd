@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="urn:serviceorder.api.m-tech.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:serviceorder.api.m-tech.com" elementFormDefault="qualified">
+<xs:import namespace="urn:api.m-tech.com" schemaLocation="xsd2.xsd"/>
+<xs:import namespace="urn:issue.api.m-tech.com" schemaLocation="xsd7.xsd"/>
+<xs:import namespace="urn:room.api.m-tech.com" schemaLocation="xsd6.xsd"/>
+<xs:import namespace="urn:guest.api.m-tech.com" schemaLocation="xsd5.xsd"/>
+<xs:complexType name="ServiceOrder">
+<xs:complexContent mixed="false">
+<xs:extension base="q1:apiObject" xmlns:q1="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:dateTime" nillable="true" name="ActionTime" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q1:User" nillable="true" name="AssignedTo" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q1:User" nillable="true" name="CreatedBy" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q1:User" nillable="true" name="DirectedBy" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:boolean" nillable="true" name="GuestRelated" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q1:User" nillable="true" name="Inspectee" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ArrayOfInspection" nillable="true" name="InspectionResults" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q2:Issue" nillable="true" name="Issue" minOccurs="0" xmlns:q2="urn:issue.api.m-tech.com">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ArrayOfLaborCost" nillable="true" name="Labor" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="LastAction" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ServiceOrderEventEnum" nillable="true" name="LastEvent" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" nillable="true" name="LastModified" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q3:Room" nillable="true" name="Location" minOccurs="0" xmlns:q3="urn:room.api.m-tech.com">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q4:Room" nillable="true" name="LocationTo" minOccurs="0" xmlns:q4="urn:room.api.m-tech.com">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="NewRemark" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ArrayOfPartCost" nillable="true" name="Parts" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:boolean" nillable="true" name="Posted" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:int" nillable="true" name="Priority" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ArrayOfRecovery" nillable="true" name="Recoveries" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" nillable="true" name="RequestTime" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q1:User" nillable="true" name="RequestedBy" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q5:Reservation" nillable="true" name="Reservation" minOccurs="0" xmlns:q5="urn:guest.api.m-tech.com">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ServiceOrderStatusEnum" nillable="true" name="Status" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Text" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Trade" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:ServiceOrderTypeEnum" nillable="true" name="Type" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:ServiceOrder" nillable="true" name="ServiceOrder"/>
+<xs:complexType name="GetServiceOrderUpdatesCollection">
+<xs:complexContent mixed="false">
+<xs:extension base="q6:apiObject" xmlns:q6="urn:api.m-tech.com">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:GetServiceOrderUpdatesCollection" nillable="true" name="GetServiceOrderUpdatesCollection"/>
+<xs:complexType name="ArrayOfInspection">
+<xs:sequence>
+<xs:element type="tns:Inspection" nillable="true" name="Inspection" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element type="tns:ArrayOfInspection" nillable="true" name="ArrayOfInspection"/>
+<xs:complexType name="Inspection">
+<xs:complexContent mixed="false">
+<xs:extension base="q7:apiObject" xmlns:q7="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Description" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:int" nillable="true" name="Result" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="ResultType" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Inspection" nillable="true" name="Inspection"/>
+<xs:complexType name="ArrayOfLaborCost">
+<xs:sequence>
+<xs:element type="tns:LaborCost" nillable="true" name="LaborCost" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element type="tns:ArrayOfLaborCost" nillable="true" name="ArrayOfLaborCost"/>
+<xs:complexType name="LaborCost">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:Cost">
+<xs:sequence>
+<xs:element type="xs:dateTime" name="BeginTime" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" name="EndTime" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="Hours" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="PricePerHour" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q8:User" nillable="true" name="WorkedBy" minOccurs="0" xmlns:q8="urn:api.m-tech.com">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:LaborCost" nillable="true" name="LaborCost"/>
+<xs:complexType name="Cost">
+<xs:complexContent mixed="false">
+<xs:extension base="q9:apiObject" xmlns:q9="urn:api.m-tech.com">
+<xs:sequence>
+<xs:element type="xs:string" nillable="true" name="Code" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="CostCode" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:dateTime" name="CreateTime" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="q9:User" nillable="true" name="CreatedBy" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:string" nillable="true" name="Description" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:double" nillable="true" name="Price" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+<xs:element type="xs:int" nillable="true" name="Quantity" minOccurs="0">
+<xs:annotation>
+<xs:appinfo>
+<DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+</xs:appinfo>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Cost" nillable="true" name="Cost"/>
+<xs:simpleType name="ServiceOrderEventEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="ASSIGNED"/>
+<xs:enumeration value="CREATE"/>
+<xs:enumeration value="COMPLETE"/>
+<xs:enumeration value="PRIORITY_CHANGED"/>
+<xs:enumeration value="START"/>
+<xs:enumeration value="STOP"/>
+<xs:enumeration value="VOIDED"/>
+<xs:enumeration value="MEMO_ADDED"/>
+<xs:enumeration value="TRADE_CHANGED"/>
+<xs:enumeration value="CALLBACK_CHANGED"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:ServiceOrderEventEnum" nillable="true" name="ServiceOrderEventEnum"/>
+<xs:complexType name="ArrayOfPartCost">
+<xs:sequence>
+<xs:element type="tns:PartCost" nillable="true" name="PartCost" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element type="tns:ArrayOfPartCost" nillable="true" name="ArrayOfPartCost"/>
+<xs:complexType name="PartCost">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:Cost">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:PartCost" nillable="true" name="PartCost"/>
+<xs:complexType name="ArrayOfRecovery">
+<xs:sequence>
+<xs:element type="tns:Recovery" nillable="true" name="Recovery" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element type="tns:ArrayOfRecovery" nillable="true" name="ArrayOfRecovery"/>
+<xs:complexType name="Recovery">
+<xs:complexContent mixed="false">
+<xs:extension base="tns:Cost">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element type="tns:Recovery" nillable="true" name="Recovery"/>
+<xs:simpleType name="ServiceOrderStatusEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="CREATED"/>
+<xs:enumeration value="DIRECTED"/>
+<xs:enumeration value="STARTED"/>
+<xs:enumeration value="STOPPED"/>
+<xs:enumeration value="COMPLETED"/>
+<xs:enumeration value="CLOSED"/>
+<xs:enumeration value="DEFERRED"/>
+<xs:enumeration value="VOIDED"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:ServiceOrderStatusEnum" nillable="true" name="ServiceOrderStatusEnum"/>
+<xs:simpleType name="ServiceOrderTypeEnum">
+<xs:restriction base="xs:string">
+<xs:enumeration value="SERVICE_ORDER"/>
+<xs:enumeration value="INCIDENT_CANDIDATE"/>
+<xs:enumeration value="TRANSPORTATION_ORDER"/>
+<xs:enumeration value="INSPECTION"/>
+<xs:enumeration value="PM_ORDER"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element type="tns:ServiceOrderTypeEnum" nillable="true" name="ServiceOrderTypeEnum"/>
+</xs:schema>
